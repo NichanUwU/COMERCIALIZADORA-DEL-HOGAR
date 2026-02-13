@@ -1,0 +1,278 @@
+function generarImagenes(categoria, carpeta) {
+  return [
+    `/comercializadora/${categoria}/${carpeta}/1.jpg`,
+    `/comercializadora/${categoria}/${carpeta}/2.jpg`,
+    `/comercializadora/${categoria}/${carpeta}/3.jpg`
+  ];
+}
+
+const productos = [
+
+  // ================= LAVADORAS (6) =================
+
+  {
+    id: 1,
+    categoria: "lavadoras",
+    nombre: "Lavadora 11 kg Hisense Semiautomática",
+    clave: "11 KG HISENSE",
+    contado: 3399,
+    total: 4299,
+    enganche: 300,
+    financiado: 3999,
+    semanas: 16,
+    pago: 250,
+    imagenes: generarImagenes("lavadoras", "hisense-11-kg")
+  },
+  {
+    id: 2,
+    categoria: "lavadoras",
+    nombre: "Lavadora 13 kg Mirage Semiautomática",
+    clave: "13 KG MIRAGE",
+    contado: 4299,
+    total: 4999,
+    enganche: 300,
+    financiado: 4699,
+    semanas: 18,
+    pago: 261,
+    imagenes: generarImagenes("lavadoras", "mirage-13-kg")
+  },
+  {
+    id: 3,
+    categoria: "lavadoras",
+    nombre: "Lavadora 16 kg Mirage Semiautomática",
+    clave: "16 KG MIRAGE",
+    contado: 5199,
+    total: 5799,
+    enganche: 500,
+    financiado: 5299,
+    semanas: 18,
+    pago: 294,
+    imagenes: generarImagenes("lavadoras", "mirage-16-kg")
+  },
+  {
+    id: 4,
+    categoria: "lavadoras",
+    nombre: "Lavadora 22 kg Mirage Semiautomática",
+    clave: "22 KG MIRAGE",
+    contado: 6499,
+    total: 7299,
+    enganche: 700,
+    financiado: 6599,
+    semanas: 18,
+    pago: 367,
+    imagenes: generarImagenes("lavadoras", "mirage-22-kg")
+  },
+  {
+    id: 5,
+    categoria: "lavadoras",
+    nombre: "Lavadora 19 kg LG Automática",
+    clave: "19 KG AUTO LG",
+    contado: 10499,
+    total: 12499,
+    enganche: 1000,
+    financiado: 11499,
+    semanas: 30,
+    pago: 383,
+    imagenes: generarImagenes("lavadoras", "lg-19-kg")
+  },
+  {
+    id: 6,
+    categoria: "lavadoras",
+    nombre: "Lavadora 20 kg Koblenz Automática",
+    clave: "20 KG AUTO KOBLENZ",
+    contado: 10799,
+    total: 12799,
+    enganche: 1000,
+    financiado: 11799,
+    semanas: 30,
+    pago: 393,
+    imagenes: generarImagenes("lavadoras", "koblenz-20-kg")
+  },
+
+  // ================= ESTUFAS (5) =================
+
+  {
+    id: 7,
+    categoria: "estufas",
+    nombre: "Estufa Acros 30” Manual",
+    clave: "6 QUEMADORES MANUAL",
+    contado: 5999,
+    total: 6999,
+    enganche: 600,
+    financiado: 6399,
+    semanas: 22,
+    pago: 291,
+    imagenes: generarImagenes("estufas", "estufa-acros-30-manual")
+  },
+  {
+    id: 8,
+    categoria: "estufas",
+    nombre: "Estufa Acros 30” Electrónico",
+    clave: "6 QUEMADORES ELECTRONICO",
+    contado: 7599,
+    total: 8499,
+    enganche: 600,
+    financiado: 7899,
+    semanas: 22,
+    pago: 359,
+    imagenes: generarImagenes("estufas", "estufa-acros-30-electronico")
+  },
+  {
+    id: 9,
+    categoria: "estufas",
+    nombre: "Estufa Mabe 20” Gris",
+    clave: "4 QUEMADORES",
+    contado: 5699,
+    total: 6199,
+    enganche: 500,
+    financiado: 5699,
+    semanas: 20,
+    pago: 285,
+    imagenes: generarImagenes("estufas", "estufa-mabe-20-gris")
+  },
+  {
+    id: 10,
+    categoria: "estufas",
+    nombre: "Estufa Midea 20” Negra/Gris",
+    clave: "4 QUEMADORES",
+    contado: 5399,
+    total: 6099,
+    enganche: 450,
+    financiado: 5649,
+    semanas: 20,
+    pago: 282,
+    imagenes: generarImagenes("estufas", "estufa-midea-20-negra-gris")
+  },
+  {
+    id: 11,
+    categoria: "estufas",
+    nombre: "Estufa Garell 20” con Gabinete",
+    clave: "4 QUEMADORES",
+    contado: 3300,
+    total: 3999,
+    enganche: 400,
+    financiado: 3599,
+    semanas: 18,
+    pago: 200,
+    imagenes: generarImagenes("estufas", "estufa-de-gabinete-garell-20")
+  },
+
+  // ================= PARRILLAS (5) =================
+
+  {
+    id: 12,
+    categoria: "parrillas",
+    nombre: "Parrilla de Mesa 4Q",
+    clave: "DE MESA",
+    contado: 849,
+    total: 1099,
+    enganche: 200,
+    financiado: 899,
+    semanas: 9,
+    pago: 100,
+    imagenes: generarImagenes("parrillas", "parrilla-de-mesa")
+  },
+  {
+    id: 13,
+    categoria: "parrillas",
+    nombre: "Parrilla Empotrable 4Q Cristal",
+    clave: "4Q CRISTAL",
+    contado: 2899,
+    total: 3349,
+    enganche: 300,
+    financiado: 3049,
+    semanas: 16,
+    pago: 191,
+    imagenes: generarImagenes("parrillas", "parrilla-4-cristal")
+  },
+  {
+    id: 14,
+    categoria: "parrillas",
+    nombre: "Parrilla Empotrable 4Q Acero",
+    clave: "4Q ACERO",
+    contado: 2599,
+    total: 2999,
+    enganche: 275,
+    financiado: 2724,
+    semanas: 16,
+    pago: 170,
+    imagenes: generarImagenes("parrillas", "parrilla-4-acero")
+  },
+  {
+    id: 15,
+    categoria: "parrillas",
+    nombre: "Parrilla Empotrable 5Q Cristal",
+    clave: "5Q CRISTAL",
+    contado: 3399,
+    total: 3699,
+    enganche: 400,
+    financiado: 3299,
+    semanas: 16,
+    pago: 206,
+    imagenes: generarImagenes("parrillas", "parrilla-5-cristal")
+  },
+  {
+    id: 16,
+    categoria: "parrillas",
+    nombre: "Parrilla Empotrable 5Q Acero",
+    clave: "5Q ACERO",
+    contado: 3099,
+    total: 3499,
+    enganche: 400,
+    financiado: 3099,
+    semanas: 16,
+    pago: 194,
+    imagenes: generarImagenes("parrillas", "parrilla-5-acero")
+  },
+
+  // ================= CILINDROS (2) =================
+
+  {
+    id: 17,
+    categoria: "cilindros",
+    nombre: "Cilindro de Gas 9 kg",
+    clave: "9 KG",
+    contado: 1650,
+    total: 1999,
+    enganche: 200,
+    financiado: 1799,
+    semanas: 12,
+    pago: 150,
+    imagenes: generarImagenes("cilindros", "cilindro-9-kg")
+  },
+  {
+    id: 18,
+    categoria: "cilindros",
+    nombre: "Cilindro de Gas 20 kg",
+    clave: "20 KG",
+    contado: 2399,
+    total: 2949,
+    enganche: 300,
+    financiado: 2649,
+    semanas: 14,
+    pago: 189,
+    imagenes: generarImagenes("cilindros", "cilindro-20-kg")
+  },
+
+  // ================= PANTALLAS (16) =================
+
+  { id: 19, categoria: "pantallas", nombre: "LG 55”", clave: "LG 55", contado: 9699, total: 10899, enganche: 800, financiado: 10099, semanas: 24, pago: 421, imagenes: generarImagenes("pantallas", "lg-55") },
+  { id: 20, categoria: "pantallas", nombre: "LG 50”", clave: "LG 50", contado: 9399, total: 10299, enganche: 750, financiado: 9549, semanas: 24, pago: 398, imagenes: generarImagenes("pantallas", "lg-50") },
+  { id: 21, categoria: "pantallas", nombre: "Hisense 65”", clave: "HISENSE 65", contado: 11199, total: 12299, enganche: 800, financiado: 11499, semanas: 24, pago: 479, imagenes: generarImagenes("pantallas", "hisense-65") },
+  { id: 22, categoria: "pantallas", nombre: "Hisense 55”", clave: "HISENSE 55", contado: 8599, total: 9499, enganche: 650, financiado: 8849, semanas: 24, pago: 369, imagenes: generarImagenes("pantallas", "hisense-55") },
+  { id: 23, categoria: "pantallas", nombre: "Hisense 50”", clave: "HISENSE 50", contado: 7899, total: 8899, enganche: 650, financiado: 8249, semanas: 24, pago: 344, imagenes: generarImagenes("pantallas", "hisense-50") },
+  { id: 24, categoria: "pantallas", nombre: "Hisense 43”", clave: "HISENSE 43", contado: 6899, total: 7599, enganche: 650, financiado: 6949, semanas: 24, pago: 290, imagenes: generarImagenes("pantallas", "hisense-43") },
+  { id: 25, categoria: "pantallas", nombre: "TCL 50”", clave: "TCL 50", contado: 7599, total: 8199, enganche: 650, financiado: 7549, semanas: 24, pago: 315, imagenes: generarImagenes("pantallas", "tcl-50") },
+  { id: 26, categoria: "pantallas", nombre: "TCL 43”", clave: "TCL 43", contado: 6299, total: 7099, enganche: 500, financiado: 6599, semanas: 24, pago: 275, imagenes: generarImagenes("pantallas", "tcl-43") },
+  { id: 27, categoria: "pantallas", nombre: "TCL 40”", clave: "TCL 40", contado: 4999, total: 5799, enganche: 400, financiado: 5399, semanas: 24, pago: 225, imagenes: generarImagenes("pantallas", "tcl-40") },
+  { id: 28, categoria: "pantallas", nombre: "TCL 32”", clave: "TCL 32", contado: 4499, total: 4699, enganche: 350, financiado: 4349, semanas: 22, pago: 198, imagenes: generarImagenes("pantallas", "tcl-32") },
+  { id: 29, categoria: "pantallas", nombre: "ONN 65”", clave: "ONN 65", contado: 9999, total: 10799, enganche: 800, financiado: 9999, semanas: 24, pago: 417, imagenes: generarImagenes("pantallas", "onn-65") },
+  { id: 30, categoria: "pantallas", nombre: "ONN 50”", clave: "ONN 50", contado: 7199, total: 7999, enganche: 800, financiado: 7199, semanas: 24, pago: 300, imagenes: generarImagenes("pantallas", "onn-50") },
+  { id: 31, categoria: "pantallas", nombre: "AIWA 43”", clave: "AIWA 43", contado: 5399, total: 6199, enganche: 400, financiado: 5799, semanas: 24, pago: 242, imagenes: generarImagenes("pantallas", "aiwa-43") },
+  { id: 32, categoria: "pantallas", nombre: "AIWA 40”", clave: "AIWA 40", contado: 3699, total: 5199, enganche: 400, financiado: 4799, semanas: 24, pago: 200, imagenes: generarImagenes("pantallas", "aiwa-40") },
+  { id: 33, categoria: "pantallas", nombre: "AIWA 32”", clave: "AIWA 32", contado: 3899, total: 4399, enganche: 350, financiado: 4049, semanas: 22, pago: 184, imagenes: generarImagenes("pantallas", "aiwa-32") },
+  { id: 34, categoria: "pantallas", nombre: "GHIA 32”", clave: "GHIA 32", contado: 3299, total: 3949, enganche: 250, financiado: 3699, semanas: 18, pago: 206, imagenes: generarImagenes("pantallas", "ghia-32") }
+
+];
+
+export default productos;
