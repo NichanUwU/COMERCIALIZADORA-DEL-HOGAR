@@ -12,7 +12,8 @@ body {
 }
 
 :root {
-    --bg: #F8F8F8; /* 60% light */
+    /*--bg: #F8F8F8; /* 60% light */
+    --bg: #C5A57D; /* 60% light */
     --brand: #211C11; /* 30% brand/dark */
     --action: #C5A57D; /* 10% action/gold */
     --card: #ffffff;
