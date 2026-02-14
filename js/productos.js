@@ -15,7 +15,7 @@ const productos = [
         nombre: "Lavadora 11 kg Hisense Semiautomática",
         categoria: "Lavadoras",
         imagen: img("lavadoras", "hisense-11-kg"),
-        contado: 3399,
+        contado: 3599,
         total: 4299,
         enganche: 300,
         financiado: 3999,
