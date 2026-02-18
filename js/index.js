@@ -1,20 +1,51 @@
 // Script para la página de inicio
 document.addEventListener('DOMContentLoaded', function() {
+    const categoriasFiltros = document.querySelector('.category-filters');
     const productsGrid = document.getElementById('products-grid');
     
-    // Obtener productos destacados
-    function cargarProductosDestacados() {
-        const productosDestacados = obtenerProductosDestacados();
+    let categoriaActual = 'Todos';
+    
+    // Inicializar los filtros
+    function inicializarFiltros() {
+        const categorias = obtenerCategorias();
+        
+        categorias.forEach(categoria => {
+            const label = document.createElement('label');
+            label.className = 'filter-label';
+            label.innerHTML = `
+                <input type="radio" name="categoria" value="${categoria}" ${categoria === 'Todos' ? 'checked' : ''}>
+                <span>${categoria}</span>
+            `;
+            
+            label.querySelector('input').addEventListener('change', function() {
+                categoriaActual = categoria;
+                actualizarProductos();
+            });
+            
+            categoriasFiltros.appendChild(label);
+        });
+    }
+    
+    // Actualizar productos según la categoría seleccionada
+    function actualizarProductos() {
+        const productosFiletrados = obtenerProductosPorCategoria(categoriaActual);
+        
+        // Mostrar máximo 8 productos
+        const productosAMostrar = productosFiletrados.slice(0, 8);
         
         // Limpiar grid
         productsGrid.innerHTML = '';
         
         // Agregar productos
-        productosDestacados.forEach(producto => {
-            const tarjeta = document.createElement('div');
-            tarjeta.innerHTML = crearTarjetaProducto(producto);
-            productsGrid.appendChild(tarjeta.firstElementChild);
-        });
+        if (productosFiletrados.length === 0) {
+            productsGrid.innerHTML = '<p class="no-products">No hay productos en esta categoría</p>';
+        } else {
+            productosAMostrar.forEach(producto => {
+                const tarjeta = document.createElement('div');
+                tarjeta.innerHTML = crearTarjetaProducto(producto);
+                productsGrid.appendChild(tarjeta.firstElementChild);
+            });
+        }
         
         // Agregar efectos hover
         agregarEfectosHover();
@@ -36,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Cargar productos
-    cargarProductosDestacados();
+    // Inicializar
+    inicializarFiltros();
+    actualizarProductos();
 });
