@@ -54,12 +54,33 @@ header {
 
 .logo img {
 /* Ajusta según necesites */
-    height: 180px;
-    width: 180px;
+    height: 152px;
+    width: 173px;
 }
 
 .logo i {
     margin-right: 10px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brand);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.logo-text p {
+    font-size: 14px;
+    color: var(--brand);
+    margin: 5px 0 0 0;
+    font-weight: 600;
 }
 
 nav ul {
