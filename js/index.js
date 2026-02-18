@@ -2,8 +2,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     const categoriasFiltros = document.querySelector('.category-filters');
     const productsGrid = document.getElementById('products-grid');
+    const featuredProductsGrid = document.getElementById('featured-products-grid');
     
     let categoriaActual = 'Todos';
+    
+    // Cargar productos destacados
+    function cargarProductosDestacados() {
+        const productosDestacados = obtenerProductosDestacados();
+        
+        // Limpiar grid
+        featuredProductsGrid.innerHTML = '';
+        
+        // Agregar productos
+        productosDestacados.forEach(producto => {
+            const tarjeta = document.createElement('div');
+            tarjeta.innerHTML = crearTarjetaProducto(producto);
+            featuredProductsGrid.appendChild(tarjeta.firstElementChild);
+        });
+        
+        // Agregar efectos hover
+        agregarEfectosHover();
+    }
     
     // Inicializar los filtros
     function inicializarFiltros() {
@@ -68,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Inicializar
+    cargarProductosDestacados();
     inicializarFiltros();
     actualizarProductos();
 });
