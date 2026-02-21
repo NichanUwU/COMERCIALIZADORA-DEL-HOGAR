@@ -459,7 +459,23 @@ const productos = [
         semanas: 18,
         pago: 206,
         destacado: false
-    }
+    },
+
+    // ================= VENTILADORES ============
+    {
+        id: 35,
+        nombre: "VENTILADOR MAN",
+        categoria: "Ventiladores", 
+        imagen: img("ventiladores", "ventilador-man"),
+        contado: 1399,
+        total: 1799,
+        enganche: 200,
+        financiado: 1599,
+        semanas: 10,
+        pago: 140,
+        destacado: true  
+    },
+
 ];
 
 // Función para obtener productos destacados
