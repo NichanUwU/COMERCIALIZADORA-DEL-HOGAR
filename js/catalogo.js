@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p style="margin:0 0 8px 0;color:#666;"><strong>Categoría:</strong> ${producto.categoria}</p>
                 <div style="margin:6px 0;padding:8px;background:#fafafa;border:1px solid #eee;border-radius:6px">
                     <p style="margin:0 0 6px 0"><strong>Precio contado:</strong> $${producto.contado.toLocaleString()}</p>
-                    ${producto.total > producto.contado ? `<p style="margin:0 0 6px 0;color:#888"><strong>Precio normal:</strong> $${producto.total.toLocaleString()}</p>` : ''}
+                    ${producto.total > producto.contado ? `<p style="margin:0 0 6px 0;color:#888"><strong>Precio financiado:</strong> $${producto.total.toLocaleString()}</p>` : ''}
                     <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche.toLocaleString()}</p>
                     <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago.toLocaleString()}</p>
                     <p style="margin:0"><strong>Plazo:</strong> ${producto.semanas} semanas</p>
