@@ -21,7 +21,7 @@ const productos = [
         financiado: 3999,
         semanas: 16,
         pago: 250,
-        destacado: true
+        destacado: false
     },
     {
         id: 2,
@@ -60,7 +60,7 @@ const productos = [
         financiado: 6599,
         semanas: 18,
         pago: 367,
-        destacado: true
+        destacado: false
     },
     {
         id: 5,
@@ -101,7 +101,7 @@ const productos = [
         financiado: 6399,
         semanas: 22,
         pago: 291,
-        destacado: true
+        destacado: false
     },
     {
         id: 8,
@@ -153,7 +153,7 @@ const productos = [
         financiado: 3599,
         semanas: 18,
         pago: 200,
-        destacado: true
+        destacado: false
     },
 
     // ================= PARRILLAS =================
@@ -168,7 +168,7 @@ const productos = [
         financiado: 899,
         semanas: 9,
         pago: 100,
-        destacado: true
+        destacado: false
     },
     {
         id: 13,
@@ -235,7 +235,7 @@ const productos = [
         financiado: 1799,
         semanas: 12,
         pago: 150,
-        destacado: true
+        destacado: false
     },
     {
         id: 18,
@@ -289,7 +289,7 @@ const productos = [
         financiado: 11499,
         semanas: 24,
         pago: 479,
-        destacado: true
+        destacado: false
     },
     {
         id: 22,
@@ -393,7 +393,7 @@ const productos = [
         financiado: 9999,
         semanas: 24,
         pago: 417,
-        destacado: true
+        destacado: false
     },
     {
         id: 30,
