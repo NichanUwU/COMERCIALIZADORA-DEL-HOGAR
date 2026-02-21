@@ -526,7 +526,7 @@ function crearTarjetaProducto(producto) {
 // Modal de información de producto (enganche, pagos)
 // Se abre al hacer click sobre la imagen de cualquier producto
 // --------------------------------------------------
-function abrirInfoProducto(producto) {
+function abrirInfoProducto(producto) { //cambiar product por porducto para que la funcion del mensajito vuelva a funcionar
     if (!producto) return;
 
     // Crear overlay
@@ -551,7 +551,7 @@ function abrirInfoProducto(producto) {
             <button class="product-info-close" aria-label="Cerrar" style="background:transparent;border:none;font-size:22px;line-height:1;cursor:pointer">&times;</button>
         </div>
         <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
-            <img src="${producto.imagen}" alt="${producto.nombre}" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #eee">
+            <img src="${producto.imagen}" alt="${producto.nombre}" style="width:250px;height:250px;object-fit:cover;border-radius:6px;border:1px solid #eee">
             <div style="flex:1">
                 <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche.toLocaleString()}</p>
                 <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago.toLocaleString()}</p>
