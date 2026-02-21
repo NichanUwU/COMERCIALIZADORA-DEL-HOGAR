@@ -505,3 +505,85 @@ function crearTarjetaProducto(producto) {
         </div>
     `;
 }
+
+// --------------------------------------------------
+// Modal de información de producto (enganche, pagos)
+// Se abre al hacer click sobre la imagen de cualquier producto
+// --------------------------------------------------
+function abrirInfoProducto(producto) {
+    if (!producto) return;
+
+    // Crear overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'product-info-overlay';
+    Object.assign(overlay.style, {
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        background: 'rgba(0,0,0,0.6)', display: 'flex',
+        alignItems: 'center', justifyContent: 'center', zIndex: 9999
+    });
+
+    // Panel
+    const panel = document.createElement('div');
+    Object.assign(panel.style, {
+        background: '#fff', color: '#111', padding: '18px', borderRadius: '8px',
+        maxWidth: '420px', width: '90%', boxSizing: 'border-box', boxShadow: '0 10px 30px rgba(0,0,0,0.25)'
+    });
+
+    panel.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <h3 style="margin:0;font-size:18px;">${producto.nombre}</h3>
+            <button class="product-info-close" aria-label="Cerrar" style="background:transparent;border:none;font-size:22px;line-height:1;cursor:pointer">&times;</button>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+            <img src="${producto.imagen}" alt="${producto.nombre}" style="width:90px;height:90px;object-fit:cover;border-radius:6px;border:1px solid #eee">
+            <div style="flex:1">
+                <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche.toLocaleString()}</p>
+                <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago.toLocaleString()}</p>
+                <p style="margin:0"><strong>Plazo:</strong> ${producto.semanas} semanas</p>
+            </div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:8px;">
+            <button class="product-info-ok" style="background:#0077cc;color:#fff;border:none;padding:8px 12px;border-radius:6px;cursor:pointer">Aceptar</button>
+        </div>
+    `;
+
+    overlay.appendChild(panel);
+    document.body.appendChild(overlay);
+
+    const cerrar = () => {
+        if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        document.removeEventListener('keydown', onKey);
+    };
+
+    panel.querySelector('.product-info-close').addEventListener('click', cerrar);
+    panel.querySelector('.product-info-ok').addEventListener('click', cerrar);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) cerrar(); });
+
+    function onKey(e) { if (e.key === 'Escape') cerrar(); }
+    document.addEventListener('keydown', onKey);
+}
+
+// Delegación: abrir modal al hacer click sobre la imagen del producto
+document.addEventListener('click', function(e) {
+    const img = e.target.closest && e.target.closest('.product-img');
+    if (!img) return;
+
+    const card = img.closest('.product-card');
+    const id = card?.querySelector('.product-title')?.dataset?.id;
+    let productoObj = null;
+
+    if (id) {
+        productoObj = productos.find(p => String(p.id) === String(id));
+    }
+
+    if (!productoObj) {
+        // fallback por coincidencia de path de imagen
+        productoObj = productos.find(p => {
+            try { return img.src && img.src.indexOf(p.imagen) !== -1; } catch { return false; }
+        });
+    }
+
+    if (productoObj) {
+        abrirInfoProducto(productoObj);
+    }
+});

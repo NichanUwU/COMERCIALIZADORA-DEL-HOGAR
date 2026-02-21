@@ -128,6 +128,65 @@ document.addEventListener('DOMContentLoaded', function() {
             galleryThumbs.appendChild(t);
         });
 
+        // --- Panel de información del producto (lado derecho) ---
+        const panelEl = galleryModal.querySelector('.gallery-panel');
+        if (panelEl) {
+            // usar layout horizontal en pantallas anchas
+            panelEl.style.display = 'flex';
+            panelEl.style.gap = '18px';
+            panelEl.style.alignItems = 'flex-start';
+
+            const mainEl = panelEl.querySelector('.gallery-main');
+            if (mainEl) {
+                mainEl.style.flex = '1 1 0%';
+                mainEl.style.maxWidth = '720px';
+            }
+
+            let infoEl = panelEl.querySelector('.gallery-info');
+            if (!infoEl) {
+                infoEl = document.createElement('div');
+                infoEl.className = 'gallery-info';
+                panelEl.appendChild(infoEl);
+            }
+
+            // contenido de información
+            infoEl.innerHTML = `
+                <h3 style="margin:0 0 8px 0;font-size:18px;">${producto.nombre}</h3>
+                <p style="margin:0 0 8px 0;color:#666;"><strong>Categoría:</strong> ${producto.categoria}</p>
+                <div style="margin:6px 0;padding:8px;background:#fafafa;border:1px solid #eee;border-radius:6px">
+                    <p style="margin:0 0 6px 0"><strong>Precio contado:</strong> $${producto.contado.toLocaleString()}</p>
+                    ${producto.total > producto.contado ? `<p style="margin:0 0 6px 0;color:#888"><strong>Precio normal:</strong> $${producto.total.toLocaleString()}</p>` : ''}
+                    <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche.toLocaleString()}</p>
+                    <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago.toLocaleString()}</p>
+                    <p style="margin:0"><strong>Plazo:</strong> ${producto.semanas} semanas</p>
+                </div>
+                <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+                    <a href="https://api.whatsapp.com/send/?phone=529651000641&text=Estoy%20interesado%20en%20el%20producto%20${encodeURIComponent(producto.nombre)}" target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;padding:8px 10px;border-radius:6px;text-decoration:none">Contactar</a>
+                    <button class="gallery-close-btn" style="background:#0077cc;color:#fff;border:none;padding:8px 10px;border-radius:6px;cursor:pointer">Cerrar</button>
+                </div>
+            `;
+
+            // estilos responsivos mínimos
+            infoEl.style.width = '320px';
+            infoEl.style.boxSizing = 'border-box';
+            infoEl.style.padding = '6px 0 0 0';
+
+            // ajustar layout en pantallas pequeñas
+            if (window.innerWidth < 600) {
+                panelEl.style.flexDirection = 'column';
+                infoEl.style.width = '100%';
+            } else {
+                panelEl.style.flexDirection = 'row';
+            }
+
+            // manejar botón Cerrar dentro del info panel
+            const closeInside = infoEl.querySelector('.gallery-close-btn');
+            if (closeInside) {
+                const modalCloseBtn = galleryModal.querySelector('.gallery-close');
+                closeInside.addEventListener('click', () => { if (modalCloseBtn) modalCloseBtn.click(); else galleryModal.setAttribute('aria-hidden', 'true'); });
+            }
+        }
+
         // set initial image
         mostrarIndice(0);
         galleryModal.setAttribute('aria-hidden', 'false');
