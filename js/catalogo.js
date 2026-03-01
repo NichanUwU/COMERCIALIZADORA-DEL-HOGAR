@@ -93,6 +93,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ---------------- Gallery modal functions ----------------
+
+    // Si la URL trae ?prod=<id> abrimos automáticamente la galería del producto.
+    function abrirProductoDesdeQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('prod');
+        if (id) {
+            const prod = obtenerProductosPorCategoria('Todos').find(p => String(p.id) === String(id));
+            if (prod) {
+                abrirGaleriaProducto(prod);
+            }
+        }
+    }
+
     const galleryModal = document.getElementById('gallery-modal');
     const galleryImage = document.getElementById('gallery-image');
     const galleryThumbs = document.getElementById('gallery-thumbs');
@@ -224,4 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar
     inicializarFiltros();
     actualizarProductos();
+    // si venimos con parámetro en la URL, mostramos la galería del producto inmediato
+    abrirProductoDesdeQuery();
 });
