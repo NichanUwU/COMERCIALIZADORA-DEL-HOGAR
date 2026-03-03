@@ -33,7 +33,7 @@ const productos = [
     enganche: 300,
     financiado: 4699,
     semanas: 18,
-    pago: 261,
+    pago: 262,
     destacado: false,
   },
   {
@@ -46,7 +46,7 @@ const productos = [
     enganche: 500,
     financiado: 5299,
     semanas: 18,
-    pago: 294,
+    pago: 295,
     destacado: false,
   },
   {
@@ -72,7 +72,7 @@ const productos = [
     enganche: 1000,
     financiado: 11499,
     semanas: 30,
-    pago: 383,
+    pago: 384,
     destacado: false,
   },
   {
@@ -85,7 +85,7 @@ const productos = [
     enganche: 1000,
     financiado: 11799,
     semanas: 30,
-    pago: 393,
+    pago: 394,
     destacado: false,
   },
 
@@ -113,7 +113,7 @@ const productos = [
     enganche: 600,
     financiado: 7899,
     semanas: 22,
-    pago: 359,
+    pago: 360,
     destacado: false,
   },
   {
@@ -139,7 +139,7 @@ const productos = [
     enganche: 450,
     financiado: 5649,
     semanas: 20,
-    pago: 282,
+    pago: 283,
     destacado: false,
   },
   {
@@ -199,7 +199,7 @@ const productos = [
     enganche: 275,
     financiado: 2724,
     semanas: 16,
-    pago: 170,
+    pago: 171,
     destacado: false,
   },
   {
@@ -212,7 +212,7 @@ const productos = [
     enganche: 400,
     financiado: 3299,
     semanas: 16,
-    pago: 206,
+    pago: 207,
     destacado: false,
   },
   {
@@ -253,7 +253,7 @@ const productos = [
     enganche: 300,
     financiado: 2649,
     semanas: 14,
-    pago: 189,
+    pago: 190,
     destacado: false,
   },
 
@@ -294,7 +294,7 @@ const productos = [
     enganche: 800,
     financiado: 11499,
     semanas: 24,
-    pago: 479,
+    pago: 480,
     destacado: false,
   },
   {
@@ -450,7 +450,7 @@ const productos = [
     enganche: 350,
     financiado: 4049,
     semanas: 22,
-    pago: 184,
+    pago: 185,
     destacado: false,
   },
   {
