@@ -428,7 +428,7 @@ const productos = [
     destacado: false,
   },
   {
-    id: 32,
+    /*id: 32,
     nombre: 'AIWA 40"',
     categoria: "Pantallas",
     imagen: img("pantalla", "aiwa-40-pulgadas"),
@@ -439,7 +439,7 @@ const productos = [
     semanas: 24,
     pago: 200,
     destacado: false,
-  },
+  */},
   {
     id: 33,
     nombre: 'AIWA 32"',
