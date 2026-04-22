@@ -479,7 +479,7 @@ const productos = [
     financiado: 1599,
     semanas: 10,
     pago: 140,
-    destacado: true,
+    destacado: false,
   },
   {
     id: 36,
