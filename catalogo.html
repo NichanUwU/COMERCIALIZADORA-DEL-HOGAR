@@ -145,19 +145,19 @@
         // Inicializar lazy loading
         document.addEventListener('DOMContentLoaded', implementarLazyLoading);
     </script>
+
+    <!-- Gallery modal (hidden by default) -->
+    <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+        <div class="gallery-backdrop"></div>
+        <div class="gallery-panel">
+            <button class="gallery-close" aria-label="Cerrar">&times;</button>
+            <div class="gallery-main">
+                <button class="gallery-prev" aria-label="Anterior">&#10094;</button>
+                <img src="" alt="Imagen del producto" id="gallery-image">
+                <button class="gallery-next" aria-label="Siguiente">&#10095;</button>
+            </div>
+            <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        </div>
+    </div>
 </body>
 </html>
-
-<!-- Gallery modal (hidden by default) -->
-<div id="gallery-modal" class="gallery-modal" aria-hidden="true">
-    <div class="gallery-backdrop"></div>
-    <div class="gallery-panel">
-        <button class="gallery-close" aria-label="Cerrar">&times;</button>
-        <div class="gallery-main">
-            <button class="gallery-prev" aria-label="Anterior">&#10094;</button>
-            <img src="" alt="Imagen del producto" id="gallery-image">
-            <button class="gallery-next" aria-label="Siguiente">&#10095;</button>
-        </div>
-        <div class="gallery-thumbs" id="gallery-thumbs"></div>
-    </div>
-</div>

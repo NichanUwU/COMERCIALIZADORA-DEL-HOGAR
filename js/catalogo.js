@@ -145,23 +145,7 @@ function abrirProductoDesdeQuery() {
 /**
  * Abre una galería modal del producto
  */
-function abrirGaleriaProducto(producto) {
-  console.log('Abrir galería del producto:', producto);
-  // Esta funcionalidad se puede expandir en el futuro
-  // Para mostrar galería de imágenes, especificaciones, etc.
-  mostrarNotificacion(`${producto.nombre} seleccionado. ¡Comparte al WhatsApp!`, 'info');
-  carrito.agregar(producto);
-}
-
-        if (id) {
-            const prod = obtenerProductosPorCategoria('Todos').find(p => String(p.id) === String(id));
-            if (prod) {
-                abrirGaleriaProducto(prod);
-            }
-        }
-    }
-
-    const galleryModal = document.getElementById('gallery-modal');
+const galleryModal = document.getElementById('gallery-modal');
     const galleryImage = document.getElementById('gallery-image');
     const galleryThumbs = document.getElementById('gallery-thumbs');
     const galleryClose = () => {
@@ -288,10 +272,4 @@ function abrirGaleriaProducto(producto) {
         backdrop.addEventListener('click', onClose);
         document.addEventListener('keydown', onKey);
     }
-    
-    // Inicializar
-    inicializarFiltros();
-    actualizarProductos();
-    // si venimos con parámetro en la URL, mostramos la galería del producto inmediato
-    abrirProductoDesdeQuery();
-});
+

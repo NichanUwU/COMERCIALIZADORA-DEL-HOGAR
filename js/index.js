@@ -40,6 +40,7 @@ function cargarProductosDestacados() {
   }
   
   agregarEfectosHover();
+  implementarLazyLoading();
 }
 
 /**

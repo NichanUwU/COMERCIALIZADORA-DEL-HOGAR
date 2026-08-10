@@ -1,6 +1,6 @@
 // Función para construir rutas de imágenes
 function img(categoria, carpeta) {
-  return `/images/comercializadora/${categoria}/${carpeta}/1.jpg`;
+  return `images/comercializadora/${categoria}/${carpeta}/1.jpg`;
 }
 
 // Toggle para activar/desactivar etiquetas de descuento en las tarjetas
