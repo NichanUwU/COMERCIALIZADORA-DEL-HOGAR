@@ -221,7 +221,12 @@ function crearTarjetaProducto(producto) {
           <small>${producto.semanas} sem × $${producto.pago.toLocaleString()}</small>
         </div>
         <button class="product-btn btn-add-cart" data-product-id="${producto.id}" aria-label="Agregar ${producto.nombre} al carrito">
-          <i class="fas fa-shopping-cart"></i> Consultar
+          <svg class="icon icon-cart" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6h15l-2 9H8L6 6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            <circle cx="9" cy="20" r="1.5" fill="currentColor" />
+            <circle cx="18" cy="20" r="1.5" fill="currentColor" />
+            <path d="M6 6l1-3h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg> Consultar
         </button>
       </div>
     </div>

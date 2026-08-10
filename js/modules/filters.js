@@ -40,7 +40,10 @@ class FiltrosYBusqueda {
               aria-label="Buscar productos"
             >
             <button class="search-btn" aria-label="Buscar">
-              <i class="fas fa-search"></i>
+              <svg class="icon icon-search" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+                <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
             </button>
           </div>
         </div>
@@ -103,7 +106,10 @@ class FiltrosYBusqueda {
               </select>
             </div>
             <button class="filter-reset-btn" aria-label="Limpiar filtros">
-              <i class="fas fa-redo"></i> Limpiar filtros
+              <svg class="icon icon-redo" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12a7 7 0 0 1 7-7h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <polyline points="19 5 15 9 19 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg> Limpiar filtros
             </button>
           </div>
         </div>
