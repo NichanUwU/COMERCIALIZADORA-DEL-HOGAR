@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo completo de Comercializadora del Hogar - Todos nuestros electrodomésticos, línea blanca, pantallas y muebles. Filtrar por categoría y precio.">
+    <meta name="keywords" content="catálogo, electrodomésticos, línea blanca, pantallas, filtrar productos">
+    <meta name="author" content="Comercializadora del Hogar">
+    <meta name="theme-color" content="#211C11">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://comercializadora-del-hogar.vercel.app/catalogo.html">
+    <meta property="og:title" content="Catálogo Completo - Comercializadora del Hogar">
+    <meta property="og:description" content="Todos nuestros productos con filtros avanzados por categoría y precio">
+    <meta property="og:image" content="/images/logo.jpeg">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://comercializadora-del-hogar.vercel.app/catalogo.html">
+    
+    <!-- Preconnect para mejora de performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <title>Catálogo Completo | COMERCIALIZADORA DEL HOGAR</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usznXcXfOyeheGiOxyjR+9UWCLsInSnY7rAqcngYYl2RY84kxVIO5ElmZo5UZEw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Catálogo de Productos",
+      "description": "Catálogo completo de electrodomésticos",
+      "url": "https://comercializadora-del-hogar.vercel.app/catalogo.html"
+    }
+    </script>
 </head>
 <body>
     <!-- Header y navegación -->
@@ -100,7 +129,15 @@
     </footer>
 
     <script src="js/productos.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/modules/filters.js"></script>
+    <script src="js/modules/cart.js"></script>
     <script src="js/catalogo.js"></script>
+    
+    <script>
+        // Inicializar lazy loading
+        document.addEventListener('DOMContentLoaded', implementarLazyLoading);
+    </script>
 </body>
 </html>
 

@@ -1,0 +1,36 @@
+# EditorConfig: Consistencia de código en todos los editores
+# https://editorconfig.org
+
+root = true
+
+# Todos los archivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# JavaScript
+[*.js]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# HTML
+[*.html]
+indent_style = space
+indent_size = 2
+
+# CSS
+[*.css]
+indent_style = space
+indent_size = 2
+
+# JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false

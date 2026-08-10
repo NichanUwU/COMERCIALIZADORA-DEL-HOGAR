@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMERCIALIZADORA DEL HOGAR</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Comercializadora del Hogar - Tu tienda de electrodomésticos de línea blanca, pantallas, muebles y más en Villaflores. Compra con financiamiento flexible.">
+    <meta name="keywords" content="electrodomésticos, línea blanca, pantallas, lavadoras, estufas, parrillas, refrigeradores, villaflores">
+    <meta name="author" content="Comercializadora del Hogar">
+    <meta name="theme-color" content="#211C11">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://comercializadora-del-hogar.vercel.app/">
+    <meta property="og:title" content="Comercializadora del Hogar - Electrodomésticos">
+    <meta property="og:description" content="Los mejores electrodomésticos con los mejores precios. Financiamiento disponible.">
+    <meta property="og:image" content="/images/logo.jpeg">
+    <meta property="og:site_name" content="Comercializadora del Hogar">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://comercializadora-del-hogar.vercel.app/">
+    <meta name="twitter:title" content="Comercializadora del Hogar">
+    <meta name="twitter:description" content="Los mejores electrodomésticos con financiamiento flexible">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://comercializadora-del-hogar.vercel.app/">
+    
+    <!-- Preconnect para mejora de performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://api.whatsapp.com">
+    
+    <title>Inicio - Comercializadora del Hogar | Electrodomésticos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usznXcXfOyeheGiOxyjR+9UWCLsInSnY7rAqcngYYl2RY84kxVIO5ElmZo5UZEw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Comercializadora del Hogar",
+      "description": "Tienda de electrodomésticos y línea blanca",
+      "url": "https://comercializadora-del-hogar.vercel.app",
+      "logo": "https://comercializadora-del-hogar.vercel.app/images/logo.jpeg",
+      "image": "https://comercializadora-del-hogar.vercel.app/images/logo.jpeg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Villaflores",
+        "addressCountry": "MX"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+52-96510-00641",
+        "contactType": "Customer Service",
+        "areaServed": "MX"
+      },
+      "sameAs": [
+        "https://www.facebook.com/share/17PV3RjV2D/"
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Header y navegación -->
@@ -147,70 +200,20 @@
     </footer>
 
     <!-- Script del slider incluido directamente en el HTML -->
-    <script>
-        // Slider automático
-        document.addEventListener('DOMContentLoaded', function() {
-            const slidesContainer = document.querySelector('.slides-container');
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.control-dot');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            
-            let currentSlide = 0;
-            const slideCount = slides.length;
-            let slideInterval;
-            
-            // Función para cambiar de slide
-            function goToSlide(n) {
-                currentSlide = (n + slideCount) % slideCount;
-                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Actualizar dots
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[currentSlide].classList.add('active');
-            }
-            
-            // Funciones para botones prev/next
-            function nextSlide() {
-                goToSlide(currentSlide + 1);
-                resetInterval();
-            }
-            
-            function prevSlide() {
-                goToSlide(currentSlide - 1);
-                resetInterval();
-            }
-            
-            // Iniciar el slider automático
-            function startInterval() {
-                slideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            // Reiniciar el intervalo cuando el usuario interactúa
-            function resetInterval() {
-                clearInterval(slideInterval);
-                startInterval();
-            }
-            
-            // Event listeners para botones
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
-            
-            // Event listeners para dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                    resetInterval();
-                });
-            });
-            
-            // Iniciar el slider automático
-            startInterval();
-        });
-    </script>
+    <!-- Todos los scripts están modularizados y se cargan en orden -->
     
-    <!-- Scripts para productos dinámicos -->
+    <!-- Scripts en orden de dependencia -->
     <script src="js/productos.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/modules/slider.js"></script>
+    <script src="js/modules/filters.js"></script>
+    <script src="js/modules/cart.js"></script>
     <script src="js/index.js"></script>
+    
+    <!-- Mejorar performance: lazy loading de imágenes -->
+    <script>
+        // Inicializar lazy loading cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', implementarLazyLoading);
+    </script>
 </body>
 </html>
