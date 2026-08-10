@@ -260,7 +260,12 @@ function implementarLazyLoading() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const img = entry.target;
-        img.src = img.dataset.src;
+        const source = img.dataset.src;
+        if (!source) {
+          observer.unobserve(img);
+          return;
+        }
+        img.src = source;
         img.removeAttribute('data-src');
         observer.unobserve(img);
       }
