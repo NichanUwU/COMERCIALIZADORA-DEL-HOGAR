@@ -961,9 +961,12 @@ function obtenerCategorias() {
 
 // Función para crear una tarjeta de producto HTML
 function crearTarjetaProducto(producto) {
-  const descuento = Math.round(
+  const descuento = producto.total && producto.contado ? Math.round(
     ((producto.total - producto.contado) / producto.total) * 100,
-  );
+  ) : 0;
+
+  const contadoFormatted = producto.contado ? producto.contado.toLocaleString() : 'N/A';
+  const totalFormatted = producto.total ? producto.total.toLocaleString() : 'N/A';
 
   return `
         <div class="product-card">
@@ -975,11 +978,11 @@ function crearTarjetaProducto(producto) {
                 <h3 class="product-title" data-id="${producto.id}">${producto.nombre}</h3>
                 <p class="product-category">${producto.categoria}</p>
                 <div class="product-price">
-                    <span class="current-price">De contado por: $${producto.contado.toLocaleString()}</span>
+                    <span class="current-price">De contado por: $${contadoFormatted}</span>
                     
                 </div>
                 <div class="product-financing">
-                    <small>O Financiado por: $${producto.total}</small>
+                    <small>O Financiado por: $${totalFormatted}</small>
                 </div>
             </div>
         </div>
