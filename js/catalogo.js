@@ -1,151 +1,112 @@
-/**
- * Script principal para la página de catálogo (catalogo.html)
- */
-
+// Script para la página de catálogo
 document.addEventListener('DOMContentLoaded', function() {
-  // Inicializar los filtros de categorías
-  inicializarFiltrosCategoria();
-  
-  // Actualizar productos al cargar
-  actualizarProductosCatalogo();
-  
-  // Escuchar cambios de filtros avanzados
-  escucharCambiosFiltros();
-  
-  // Manejar parámetros de URL (si existen)
-  abrirProductoDesdeQuery();
-});
-
-let categoriaActual = 'Todos';
-
-/**
- * Inicializa los filtros de categorías
- */
-function inicializarFiltrosCategoria() {
-  const categoriasFiltros = document.querySelector('.category-filters');
-  if (!categoriasFiltros) return;
-  
-  const categorias = obtenerCategorias();
-  
-  categorias.forEach(categoria => {
-    const label = document.createElement('label');
-    label.className = 'filter-label';
-    label.innerHTML = `
-      <input type="radio" name="categoria" value="${categoria}" ${categoria === 'Todos' ? 'checked' : ''}>
-      <span>${categoria}</span>
-    `;
-    
-    label.querySelector('input').addEventListener('change', function() {
-      categoriaActual = categoria;
-      actualizarProductosCatalogo();
-      
-      // Disparar evento para otros módulos
-      const evento = new CustomEvent('categoria-cambiada', {
-        detail: { categoria }
-      });
-      window.dispatchEvent(evento);
-    });
-    
-    categoriasFiltros.appendChild(label);
-  });
-}
-
-/**
- * Actualiza la visualización de productos en el catálogo
- */
-function actualizarProductosCatalogo() {
-  const productosFiletrados = obtenerProductosPorCategoria(categoriaActual);
-  const productsGrid = document.getElementById('products-grid');
-  const categoryTitle = document.getElementById('category-title');
-  const productCount = document.getElementById('product-count');
-  
-  if (!productsGrid) return;
-  
-  // Actualizar título
-  const nombreCategoria = categoriaActual === 'Todos' ? 'Todos los Productos' : categoriaActual;
-  if (categoryTitle) categoryTitle.textContent = nombreCategoria;
-  
-  // Actualizar contador
-  if (productCount) {
-    const pluralidad = productosFiletrados.length !== 1 ? 's' : '';
-    productCount.textContent = `Mostrando ${productosFiletrados.length} producto${pluralidad}`;
-  }
-  
-  // Limpiar grid
-  productsGrid.innerHTML = '';
-  
-  // Agregar productos
-  if (productosFiletrados.length === 0) {
-    productsGrid.innerHTML = '<p class="no-products" style="grid-column: 1/-1; text-align: center;">No hay productos en esta categoría</p>';
-  } else {
-    productosFiletrados.forEach(producto => {
-      const tarjeta = document.createElement('div');
-      tarjeta.innerHTML = crearTarjetaProducto(producto);
-      productsGrid.appendChild(tarjeta.firstElementChild);
-    });
-  }
-  
-  agregarEfectosHover();
-  implementarLazyLoading();
-}
-
-/**
- * Escucha cambios en los filtros aplicados por el módulo de filtros
- */
-function escucharCambiosFiltros() {
-  window.addEventListener('filtros-aplicados', (e) => {
-    const { productos: productosFiletrados, cantidad } = e.detail;
+    const categoriasFiltros = document.querySelector('.category-filters');
     const productsGrid = document.getElementById('products-grid');
     const categoryTitle = document.getElementById('category-title');
     const productCount = document.getElementById('product-count');
     
-    if (!productsGrid) return;
+    let categoriaActual = 'Todos';
     
-    // Actualizar título
-    if (categoryTitle) categoryTitle.textContent = 'Resultados de búsqueda';
-    
-    // Actualizar contador
-    if (productCount) {
-      const pluralidad = cantidad !== 1 ? 's' : '';
-      productCount.textContent = `Mostrando ${cantidad} producto${pluralidad}`;
+    // Inicializar los filtros
+    function inicializarFiltros() {
+        const categorias = obtenerCategorias();
+        
+        categorias.forEach(categoria => {
+            const label = document.createElement('label');
+            label.className = 'filter-label';
+            label.innerHTML = `
+                <input type="radio" name="categoria" value="${categoria}" ${categoria === 'Todos' ? 'checked' : ''}>
+                <span>${categoria}</span>
+            `;
+            
+            label.querySelector('input').addEventListener('change', function() {
+                categoriaActual = categoria;
+                actualizarProductos();
+            });
+            
+            categoriasFiltros.appendChild(label);
+        });
     }
     
-    productsGrid.innerHTML = '';
-    
-    if (productosFiletrados.length === 0) {
-      productsGrid.innerHTML = '<p class="no-products" style="grid-column: 1/-1; text-align: center;">No hay productos que coincidan con los filtros</p>';
-    } else {
-      productosFiletrados.forEach(producto => {
-        const tarjeta = document.createElement('div');
-        tarjeta.innerHTML = crearTarjetaProducto(producto);
-        productsGrid.appendChild(tarjeta.firstElementChild);
-      });
+    // Actualizar productos según la categoría seleccionada
+    function actualizarProductos() {
+        const productosFiletrados = obtenerProductosPorCategoria(categoriaActual);
+        
+        // Actualizar título
+        const nombreCategoria = categoriaActual === 'Todos' ? 'Todos los Productos' : categoriaActual;
+        categoryTitle.textContent = nombreCategoria;
+        
+        // Actualizar contador
+        productCount.textContent = `Mostrando ${productosFiletrados.length} producto${productosFiletrados.length !== 1 ? 's' : ''}`;
+        
+        // Limpiar grid
+        productsGrid.innerHTML = '';
+        
+        // Agregar productos
+        if (productosFiletrados.length === 0) {
+            productsGrid.innerHTML = '<p class="no-products">No hay productos en esta categoría</p>';
+        } else {
+            productosFiletrados.forEach(producto => {
+                const tarjeta = document.createElement('div');
+                tarjeta.innerHTML = crearTarjetaProducto(producto);
+                productsGrid.appendChild(tarjeta.firstElementChild);
+            });
+        }
+        
+        // Agregar efectos hover
+        agregarEfectosHover();
     }
     
-    agregarEfectosHover();
-    implementarLazyLoading();
-  });
-}
+    // Efectos hover en las tarjetas
+    function agregarEfectosHover() {
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
+            });
+            
+            // Abrir galería al hacer click en la tarjeta
+            card.addEventListener('click', function(e) {
+                // evitar abrir cuando se hace click en botones internos (si los hay)
+                if (e.target.tagName.toLowerCase() === 'button' || e.target.closest('a')) return;
+                const productoId = card.querySelector('.product-title')?.dataset?.id || null;
+                // obtener producto por nombre o por id
+                const nombre = card.querySelector('.product-title')?.textContent || null;
+                let productoObj = null;
+                if (productoId) {
+                    productoObj = obtenerProductosPorCategoria('Todos').find(p => p.id == productoId);
+                }
+                if (!productoObj && nombre) {
+                    productoObj = obtenerProductosPorCategoria('Todos').find(p => p.nombre === nombre);
+                }
+                if (productoObj) {
+                    abrirGaleriaProducto(productoObj);
+                }
+            });
+        });
+    }
 
-/**
- * Si la URL trae ?prod=<id> abrimos automáticamente la galería del producto.
- */
-function abrirProductoDesdeQuery() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get('prod');
-  
-  if (id) {
-    const producto = productos.find(p => p.id == id);
-    if (producto) {
-      abrirGaleriaProducto(producto);
-    }
-  }
-}
+    // ---------------- Gallery modal functions ----------------
 
-/**
- * Abre una galería modal del producto
- */
-const galleryModal = document.getElementById('gallery-modal');
+    // Si la URL trae ?prod=<id> abrimos automáticamente la galería del producto.
+    function abrirProductoDesdeQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('prod');
+        if (id) {
+            const prod = obtenerProductosPorCategoria('Todos').find(p => String(p.id) === String(id));
+            if (prod) {
+                abrirGaleriaProducto(prod);
+            }
+        }
+    }
+
+    const galleryModal = document.getElementById('gallery-modal');
     const galleryImage = document.getElementById('gallery-image');
     const galleryThumbs = document.getElementById('gallery-thumbs');
     const galleryClose = () => {
@@ -206,11 +167,11 @@ const galleryModal = document.getElementById('gallery-modal');
                 <h3 style="margin:0 0 8px 0;font-size:18px;">${producto.nombre}</h3>
                 <p style="margin:0 0 8px 0;color:#666;"><strong>Categoría:</strong> ${producto.categoria}</p>
                 <div style="margin:6px 0;padding:8px;background:#fafafa;border:1px solid #eee;border-radius:6px">
-                    <p style="margin:0 0 6px 0"><strong>Precio contado:</strong> $${producto.contado ? producto.contado.toLocaleString() : 'N/A'}</p>
-                    ${producto.total && producto.contado && producto.total > producto.contado ? `<p style="margin:0 0 6px 0;color:#888"><strong>Precio financiado:</strong> $${producto.total.toLocaleString()}</p>` : ''}
-                    <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche ? producto.enganche.toLocaleString() : 'N/A'}</p>
-                    <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago ? producto.pago.toLocaleString() : 'N/A'}</p>
-                    <p style="margin:0"><strong>Plazo:</strong> ${producto.semanas ? producto.semanas : 'N/A'} semanas</p>
+                    <p style="margin:0 0 6px 0"><strong>Precio contado:</strong> $${producto.contado.toLocaleString()}</p>
+                    ${producto.total > producto.contado ? `<p style="margin:0 0 6px 0;color:#888"><strong>Precio financiado:</strong> $${producto.total.toLocaleString()}</p>` : ''}
+                    <p style="margin:0 0 6px 0"><strong>Enganche:</strong> $${producto.enganche.toLocaleString()}</p>
+                    <p style="margin:0 0 6px 0"><strong>Pago semanal:</strong> $${producto.pago.toLocaleString()}</p>
+                    <p style="margin:0"><strong>Plazo:</strong> ${producto.semanas} semanas</p>
                 </div>
                 <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
                     <a href="https://api.whatsapp.com/send/?phone=529651000641&text=Estoy%20interesado%20en%20el%20producto%20${encodeURIComponent(producto.nombre)}" target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;padding:8px 10px;border-radius:6px;text-decoration:none">Contactar</a>
@@ -272,4 +233,10 @@ const galleryModal = document.getElementById('gallery-modal');
         backdrop.addEventListener('click', onClose);
         document.addEventListener('keydown', onKey);
     }
-
+    
+    // Inicializar
+    inicializarFiltros();
+    actualizarProductos();
+    // si venimos con parámetro en la URL, mostramos la galería del producto inmediato
+    abrirProductoDesdeQuery();
+});
