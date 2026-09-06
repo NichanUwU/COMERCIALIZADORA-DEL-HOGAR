@@ -837,8 +837,8 @@ const productos = [
   {
     id: 63,
     nombre: "VANITY DE 6 GAVETAS BLANCO",
-    categoria: "Vanidades",
-    imagen: img("vanidades", "vanity-6-gavetas-blanco"),
+    categoria: "Tocadores",
+    imagen: img("tocadores", "vanity-6-gavetas-blanco"),
     contado: 4899,
     total: 5499,
     enganche: 500,
@@ -850,8 +850,8 @@ const productos = [
   {
     id: 64,
     nombre: "VANITY DE 6 GAVETAS GRIS",
-    categoria: "Vanidades",
-    imagen: img("vanidades", "vanity-6-gavetas-gris"),
+    categoria: "Tocadores",
+    imagen: img("tocadores", "vanity-6-gavetas-gris"),
     contado: 4899,
     total: 5499,
     enganche: 500,
