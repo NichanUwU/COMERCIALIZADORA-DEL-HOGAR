@@ -845,7 +845,7 @@ const productos = [
     financiado: 5499,
     semanas: 18,
     pago: 278,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 64,
@@ -858,7 +858,7 @@ const productos = [
     financiado: 5499,
     semanas: 18,
     pago: 278,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 65,
@@ -871,7 +871,7 @@ const productos = [
     financiado: 4999,
     semanas: 16,
     pago: 282,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 66,
@@ -884,7 +884,7 @@ const productos = [
     financiado: 3500,
     semanas: 16,
     pago: 200,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 67,
@@ -897,7 +897,7 @@ const productos = [
     financiado: 4299,
     semanas: 16,
     pago: 247,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 68,
@@ -910,7 +910,7 @@ const productos = [
     financiado: 4999,
     semanas: 16,
     pago: 285,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 69,
@@ -923,7 +923,7 @@ const productos = [
     financiado: 5599,
     semanas: 18,
     pago: 284,
-    destacado: false,
+    destacado: true,
   },
   {
     id: 70,
@@ -936,7 +936,7 @@ const productos = [
     financiado: 5999,
     semanas: 18,
     pago: 303,
-    destacado: false,
+    destacado: true,
   },
 ];
 
