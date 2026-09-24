@@ -162,7 +162,7 @@ Si deseas mejorar el proyecto:
 
 ## Licencia
 
-No se especifica una licencia en este repositorio. Si el proyecto será publicado o compartido públicamente, se recomienda definir una licencia antes de distribuirlo.
+Copyleft
 
 ---
 
